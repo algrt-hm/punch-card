@@ -4,7 +4,7 @@ project_name = punch-card
 python_version = 3.11.2
 sqlite = sqlite3 $(project_name).sqlite3
 
-all: help
+all: run
 
 clean:
 	rm $(project_name).sqlite3
@@ -26,7 +26,7 @@ test:
 run:
 	python src/main.py
 
-dev:
+sync:
 	python src/sync_dbs.py
 
 format:
