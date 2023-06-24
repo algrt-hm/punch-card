@@ -1,0 +1,6 @@
+[database]
+
+username = "testusername"
+password = "testpassword"
+host = "testhost"
+database = "testdatabase"
