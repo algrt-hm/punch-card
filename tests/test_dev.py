@@ -2,38 +2,6 @@ from src.db import *
 from typing import Any
 from rich import print as pprint
 
-# Unused
-def mock_internal_log() -> list[list[dict[str, Any]]]:
-    return [
-        [
-            {
-                "label": "Job/interview prep",
-                "state": "start",
-                "ts": datetime.datetime(2023, 6, 24, 10, 22, 40, 201346, tzinfo=datetime.timezone.utc),
-                "date": datetime.date(2023, 6, 24),
-            },
-            {
-                "label": "Job/interview prep",
-                "state": "stop",
-                "ts": datetime.datetime(2023, 6, 24, 10, 22, 40, 621774, tzinfo=datetime.timezone.utc),
-                "date": datetime.date(2023, 6, 24),
-            },
-        ],
-        [
-            {
-                "label": "Personal finance",
-                "state": "start",
-                "ts": datetime.datetime(2023, 6, 24, 10, 22, 38, 4337, tzinfo=datetime.timezone.utc),
-                "date": datetime.date(2023, 6, 24),
-            },
-            {
-                "label": "Personal finance",
-                "state": "stop",
-                "ts": datetime.datetime(2023, 6, 24, 10, 22, 38, 376248, tzinfo=datetime.timezone.utc),
-                "date": datetime.date(2023, 6, 24),
-            },
-        ],
-    ]
 
 # Unused
 def mock_internal_log() -> list[list[dict[str, Any]]]:
@@ -67,6 +35,41 @@ def mock_internal_log() -> list[list[dict[str, Any]]]:
             },
         ],
     ]
+
+
+# Unused
+def mock_internal_log() -> list[list[dict[str, Any]]]:
+    return [
+        [
+            {
+                "label": "Job/interview prep",
+                "state": "start",
+                "ts": datetime.datetime(2023, 6, 24, 10, 22, 40, 201346, tzinfo=datetime.timezone.utc),
+                "date": datetime.date(2023, 6, 24),
+            },
+            {
+                "label": "Job/interview prep",
+                "state": "stop",
+                "ts": datetime.datetime(2023, 6, 24, 10, 22, 40, 621774, tzinfo=datetime.timezone.utc),
+                "date": datetime.date(2023, 6, 24),
+            },
+        ],
+        [
+            {
+                "label": "Personal finance",
+                "state": "start",
+                "ts": datetime.datetime(2023, 6, 24, 10, 22, 38, 4337, tzinfo=datetime.timezone.utc),
+                "date": datetime.date(2023, 6, 24),
+            },
+            {
+                "label": "Personal finance",
+                "state": "stop",
+                "ts": datetime.datetime(2023, 6, 24, 10, 22, 38, 376248, tzinfo=datetime.timezone.utc),
+                "date": datetime.date(2023, 6, 24),
+            },
+        ],
+    ]
+
 
 # Unused
 def totals_from_internal_log(l_of_l_of_d=mock_internal_log()) -> dict[str, float]:
@@ -119,11 +122,11 @@ def totals_from_db_log(log) -> dict[str, float]:
     return totals
 
 
-def test_db_reconcile():
-    conn_str = default_db_url
-
-    state = read_state(conn_str=conn_str)
-    log = read_timer_log(conn_str=conn_str)
-
-    pprint(totals_from_db_log(log))
-    pprint(totals_from_internal_log())
+# def test_db_reconcile():
+# conn_str = default_db_url
+#
+# state = read_state(conn_str=conn_str)
+# log = read_timer_log(conn_str=conn_str)
+#
+# pprint(totals_from_db_log(log))
+# pprint(totals_from_internal_log())

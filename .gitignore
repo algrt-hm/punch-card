@@ -2,6 +2,7 @@ poetry.lock
 *sqlite3
 creds.toml
 .vscode
+*.ical
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

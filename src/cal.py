@@ -74,11 +74,15 @@ def create_file_name(label: str, start: datetime.datetime, end: datetime.datetim
     return "_".join([fmt(ts), label, fmt(start), fmt(end)]) + extension
 
 
-if __name__ == "__main__":
+def cal(date_of_interest: datetime.date) -> None:
     ts = datetime.datetime.now(tz=pytz.utc)
-    # Print output
-    df = pd.DataFrame(parse_rows(db.read_timer_log()))
-    print(df.to_markdown(index=False))
+    df = pd.DataFrame(parse_rows(db.read_timer_log_date(date_of_interest)))
+
+    if len(df) == 0:
+        print(f"No records for {date_of_interest}")
+        return
+    else:
+        print(df.to_markdown(index=False))
 
     for _, r in df.iterrows():
         params = dict(label=r.label, start=r.start, end=r.stop, ts=ts)
@@ -86,3 +90,7 @@ if __name__ == "__main__":
         file_name = create_file_name(**params)
         pathlib.Path(file_name).write_bytes(cal.to_ical())
         print(f"{file_name} written")
+
+
+if __name__ == "__main__":
+    cal(datetime.date.today())

@@ -150,6 +150,13 @@ def read_timer_log(conn_str: str = default_db_url) -> list[TimerLogBase]:
     return ret
 
 
+def read_timer_log_date(date: datetime.date, conn_str: str = default_db_url) -> list[TimerLogBase]:
+    with get_session(conn_str=conn_str) as session:
+        statement = sqlalchemy.select(TimerLogBase).where(TimerLogBase.date == date).order_by(TimerLogBase.ts)
+        ret = session.scalars(statement).all()
+    return ret
+
+
 def clear_state(conn_str: str = default_db_url) -> None:
     stmt = sqlalchemy.delete(TimerStateBase)
     with get_session(conn_str=conn_str) as session:

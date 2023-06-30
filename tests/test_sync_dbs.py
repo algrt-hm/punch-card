@@ -1,4 +1,4 @@
-from src.sync_dbs import *
+from sync import *
 from icecream import ic
 
 

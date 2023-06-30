@@ -1,14 +1,8 @@
 import sqlalchemy
 import datetime
+from rich import print as pprint
 
-from src.db import (
-    get_test_engine_and_session,
-    metadata,
-    TimerLogPydantic,
-    TimerStatePydantic,
-    TimerLogBase,
-    TimerStateBase,
-)
+from src.db import get_test_engine_and_session, metadata, TimerLogPydantic, TimerStatePydantic, TimerLogBase, TimerStateBase, read_timer_log_date
 
 # get test engine and session
 engine, Session = get_test_engine_and_session()
@@ -80,3 +74,9 @@ def test_read_from_db():
     with_tz = str(row) == str(TimerStateBase(label="label", elapsed=1.1, ts=ts))
     without_tz = str(row) == str(TimerStateBase(label="label", elapsed=1.1, ts=raw_ts))
     assert with_tz or without_tz
+
+
+def test_read_timer_log_date():
+    date_ = [int(x) for x in "2023-06-28".split("-")]
+    ret = read_timer_log_date(datetime.date(*date_))
+    pprint(len(ret), ret)

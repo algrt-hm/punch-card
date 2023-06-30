@@ -194,7 +194,7 @@ class Timer(Static):
         yield TimeDisplay(elapsed=self.elapsed)
 
 
-class Punchcard(App):
+class Punchcard(App[int]):
     """A simple app to track time, using textual"""
 
     CSS_PATH = "style.css"
@@ -208,6 +208,8 @@ class Punchcard(App):
         ("c", "clear_output", "Clear output"),
     ]
     SUB_TITLE = "let's get timing"
+
+    return_value = 0
 
     def action_clear_output(self) -> None:
         pretty_output("")
@@ -317,8 +319,3 @@ class Punchcard(App):
             add_timer(label=each.label, elapsed=each.elapsed)
 
         pretty_output(inputs)
-
-
-if __name__ == "__main__":
-    app = Punchcard()
-    app.run()
