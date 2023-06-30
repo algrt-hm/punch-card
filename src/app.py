@@ -319,3 +319,12 @@ class Punchcard(App[int]):
             add_timer(label=each.label, elapsed=each.elapsed)
 
         pretty_output(inputs)
+
+
+def runapp() -> int:
+    app = Punchcard()
+    return app.run()
+
+
+if __name__ == "__main__":
+    runapp()

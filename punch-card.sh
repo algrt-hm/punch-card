@@ -2,13 +2,6 @@
 
 ENVNAME="punch-card"
 
-# Check we got 1 or 2 args
-
-if [ $# -eq 0 ]
-  then
-    echo "No arguments supplied"
-fi
-
 f-setup-pyenv() {
     # https://stackoverflow.com/a/677212
     if ! command -v pyenv &>/dev/null; then
@@ -25,13 +18,6 @@ f-setup-pyenv() {
         eval "$(pyenv virtualenv-init -)"
     fi
 }
-
-# if [[ -z $PYENV_VIRTUALENV_INIT ]]; then
-#     echo "will set up pyenv-virtualenv"
-#     f-setup-pyenv
-# else
-#     echo "pyenv-virtualenv already set up"
-# fi
 
 f-setup-pyenv
 

@@ -1,11 +1,10 @@
 import argparse
 import sys
 import datetime
-from app import Punchcard
+from app import runapp
 from cal import cal
 from sync import sync
 from typing import Final
-
 
 
 def main() -> int:
@@ -29,8 +28,7 @@ def main() -> int:
         return 1
 
     if args.app:
-        app = Punchcard()
-        return app.run()
+        return runapp()
 
     if args.sync:
         sync()
