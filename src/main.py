@@ -1,3 +1,5 @@
+"""A simple app to track time, using textual"""
+
 import argparse
 import sys
 import datetime

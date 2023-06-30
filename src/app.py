@@ -1,7 +1,3 @@
-"""
-A simple app to track time, using textual
-"""
-
 import time
 import datetime
 
@@ -321,7 +317,13 @@ class Punchcard(App[int]):
         pretty_output(inputs)
 
 
+# app must be global unfortunately
+app: Punchcard | None = None
+
+
 def runapp() -> int:
+    global app
+
     app = Punchcard()
     return app.run()
 
