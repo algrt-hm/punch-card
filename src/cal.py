@@ -69,7 +69,7 @@ def create_file_name(label: str, start: datetime.datetime, end: datetime.datetim
     def fmt(dt):
         return dt.strftime("%Y-%m-%d-%X").replace(":", "")
 
-    extension = ".ical"
+    extension = ".vcs"
     label = label.replace("-", "").replace(" ", "_").replace("/", "_")
     return "_".join([fmt(ts), label, fmt(start), fmt(end)]) + extension
 
