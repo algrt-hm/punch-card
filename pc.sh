@@ -1,5 +1,5 @@
 #!/bin/bash
 
 ./punch-card.sh -s && \
-./punch-card.sh -a && \
+nice -n 20 ./punch-card.sh -a && \
 ./punch-card.sh -s
