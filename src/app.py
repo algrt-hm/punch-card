@@ -195,7 +195,7 @@ class Punchcard(App[int]):
 
     CSS_PATH = "style.css"
     BINDINGS = [
-        ("q", "quit", "Quit"),
+        ("q", "exit_hook", "Write+quit"),
         ("n", "add_timer", "New activity"),
         ("r", "remove_timer", "Remove activity"),
         ("w", "write_to_db", "Write to db"),
@@ -236,6 +236,12 @@ class Punchcard(App[int]):
         activity.visible = True
         activity.scroll_visible()
         activity.focus()
+
+    def action_exit_hook(self) -> None:
+        """Save and exit"""
+
+        self.action_write_to_db()
+        self.exit()
 
     def action_add_timer(self) -> None:
         """An action to add a timer"""
@@ -317,7 +323,7 @@ class Punchcard(App[int]):
         pretty_output(inputs)
 
 
-# app must be global unfortunately
+# app must be global
 app: Punchcard | None = None
 
 
