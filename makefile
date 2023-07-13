@@ -7,7 +7,7 @@ sqlite = sqlite3 $(project_name).sqlite3
 all: run
 
 clean:
-	rm $(project_name).sqlite3
+	rm *.vcs
 
 read-state:
 	@$(sqlite) \
