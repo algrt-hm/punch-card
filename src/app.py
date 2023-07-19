@@ -66,7 +66,7 @@ class MyInput(Input):
     """Widget to get input from the user"""
 
     def on_input_submitted(self, event: Input.Submitted) -> None:
-        pretty_output(f"{event} recieved")
+        # pretty_output(f"{event} recieved")
         self.disabled = True
         enable_timers()
         add_timer(self.value)
@@ -162,7 +162,9 @@ class Timer(Static):
             self.elapsed += (log_entry["ts"] - previous_entry["ts"]).total_seconds()
 
         self.timer_log.append(log_entry)
-        pretty_output(log_entry)
+
+        # TODO: add verbosity toggle
+        # pretty_output(log_entry)
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         """Event handler called when button is pressed"""
@@ -320,7 +322,8 @@ class Punchcard(App[int]):
         for each in inputs:
             add_timer(label=each.label, elapsed=each.elapsed)
 
-        pretty_output(inputs)
+        # TODO: add verbosity toggle
+        # pretty_output(inputs)
 
 
 # app must be global
