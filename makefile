@@ -20,6 +20,9 @@ read-log:
 sql:
 	$(sqlite)
 
+cal:
+	python src/cal.py
+
 test:
 	python -m pytest -s
 

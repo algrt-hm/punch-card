@@ -93,4 +93,4 @@ def cal(date_of_interest: datetime.date) -> None:
 
 
 if __name__ == "__main__":
-    cal(datetime.date.today())
+    cal(datetime.date.today() - datetime.timedelta(days=7))
